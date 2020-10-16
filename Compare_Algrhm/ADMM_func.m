@@ -7,6 +7,7 @@ n_para = length(indx);
 iter_max = iteration;
 
 x_ADMM = zeros(n_para,n_para);
+%x_ADMM = spalloc(n_para,n_para,nnz(M));
 z_ADMM = zeros(n_para,1);   %z_bar
 u_ADMM = zeros(n_para,1);
 
@@ -29,14 +30,12 @@ while k <=iter_max
         x_ADMM(indx{i},i) = temp_x * max(0, 1-lambda * w(i)/rho/norm(temp_x));
     end
     t1_ADMM(k) = toc;
-    
     %update z and u
     tic
     x_bar = sum(x_ADMM,2)/n_para;
     z_ADMM = 1/(n_para+rho)*(y+ rho*(u_ADMM+x_bar));
     u_ADMM = u_ADMM + x_bar - z_ADMM;
     t2_ADMM(k) = toc;
-    
     
     dual_ADMM(k) = sqrt(sum(x_ADMM.^2,1))*lambda* w + 0.5*norm(z_ADMM*n_para - y)^2 +rho*n_para*temp_u'*(sum(x_ADMM,2)/n_para - z_ADMM)+0.5*rho*n_para*norm(sum(x_ADMM,2)/n_para - z_ADMM)^2;
     

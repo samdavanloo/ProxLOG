@@ -7,13 +7,12 @@ This Matlab function contains our ADMM implementation with the sharing scheme to
 ## Content
 
 ```
-\
-|
-+ --- prox_ADMM.m : solver for proximal operator of LOG penalty using ADMM
-|
-+ --- driver.m : Demo code for calling prox_ADMM
-|
-+ --- Compare_Algrhm : Code that compare different method of proximal operator
+.
+├── Compare_Algrhm //Code that compare different methods of proximal operator
+├── ReadMe.md
+├── driver.m	//Demo code for calling prox_ADMM
+└── prox_ADMM.m //Solver for proximal operator of LOG penalty using ADMM
+
 ```
 
 Function:
