@@ -8,12 +8,43 @@ This Matlab function contains our ADMM implementation with the sharing scheme to
 
 ```
 .
-├── Compare_Algrhm //Code that compare different methods of proximal operator
-├── ReadMe.md
+├── Experiments
+│   ├── Cancer // Section 4.2.2
+│   │   ├── ADMM_L2.m
+│   │   ├── CBCD_L2.m
+│   │   ├── Figures
+│   │   ├── RBCD_L2.m
+│   │   ├── Results
+│   │   ├── cancer_FISTA_ADMM.m	// algorithm code
+│   │   ├── cancer_FISTA_CBCD.m // algorithm code
+│   │   ├── cancer_FISTA_RBCD.m // algorithm code
+│   │   ├── data_cancer.mat	// processed source data
+│   │   └── process_result.m // code to plot the final result
+│   ├── Simulations	// Section 4.1
+│   │   ├── Data	// Simulated data
+│   │   ├── Figures	// result plots
+│   │   ├── Functions // compared algorithms
+│   │   ├── Result	// result for all cases
+│   │   ├── Result_R // result of R package 'HSM' 
+│   │   ├── main_HSM.r // code to run 'HSM'
+│   │   └── main_compare.m // main code that do the compare
+│   └── Topics // Section 4.2.1
+│       ├── Data
+│       ├── FISTA_ADMM.m // algorithm code
+│       ├── FISTA_CBCD.m // algorithm code
+│       ├── FISTA_RBCD.m // algorithm code
+│       ├── Figures
+│       ├── Functions
+│       ├── Results
+│       └── process_result.m // code to plot the final result
 ├── driver.m	//Demo code for calling prox_ADMM
 └── prox_ADMM.m //Solver for proximal operator of LOG penalty using ADMM
 
 ```
+
+
+
+## Call the function
 
 Function:
 
