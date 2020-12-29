@@ -36,11 +36,13 @@ node_nconct = range_gene(~idx);
 %% Generate group cells
 
 % sigle nodes
-G1 = mat2cell(range_gene(~idx)', ones(sum(~idx), 1));
+G1 = range_gene(~idx)' +1;
+G1 = mat2cell(G1,ones(sum(~idx), 1));
 % connected nodes
-G2 = mat2cell(group_newindex, ones(size(group_newindex, 1), 1));
+G2 = group_newindex+1;
+G2 = mat2cell(G2, ones(size(group_newindex, 1), 1));
 % total group
-G_idx = [G1; G2];
+G_idx = [ {1} ; G1; G2];
 
 %% Seperate training and testing set
 rng(6)
