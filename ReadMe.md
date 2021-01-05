@@ -56,7 +56,7 @@ solves problem
 $$
 \min_{\beta} \frac{1}{2}||\beta-b||^2 + \lambda \Omega_{\text{LOG}}(\beta)
 $$
-Required input:
+Required inputs:
 
 - ancestor: cell array that stores the ancestor nodes of each node
 - b: vector
@@ -67,7 +67,7 @@ Required input:
 
 
 
-Output:
+Outputs:
 
 - beta : solution of proximal operator
 - objval : objective value of proximal operator
