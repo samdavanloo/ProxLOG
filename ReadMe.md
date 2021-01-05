@@ -56,6 +56,7 @@ solves problem
 $$
 \min_{\beta} \frac{1}{2}||\beta-b||^2 + \lambda \Omega_{\text{LOG}}(\beta)
 $$
+
 Required inputs:
 
 - ancestor: cell array that stores the ancestor nodes of each node
