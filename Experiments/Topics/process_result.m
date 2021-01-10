@@ -51,35 +51,43 @@ t_ADMM_prl = cumsum(t_ADMM_prl);
 %% Plot 
 figure(1)
 clf
-
+xlim([0,1e5])
 % for line style legend
-semilogy(NaN, NaN, 'color', 'black','Marker','o','MarkerSize',10)
+semilogy(NaN, NaN, '--','color', 'black')
 hold on
-semilogy(NaN,NaN,'color','black')
-semilogy(NaN, NaN, 'linestyle', '--', 'color', 'black')
+semilogy(NaN,NaN,'-','color','black')
+semilogy(NaN, NaN, 'linestyle', '-.', 'color', 'black')
 semilogy(NaN, NaN, 'linestyle', ':', 'color', 'black')
 
 % for line color legend
-patch(NaN, NaN, [0.00, 0.45, 0.74])
-patch(NaN, NaN, [0.85, 0.33, 0.10])
+semilogy(NaN,NaN,'LineStyle','None','Marker','o','MarkerSize',10,'Color',[0.00, 0.45, 0.74])
+semilogy(NaN,NaN,'LineStyle','None','Marker','diamond','MarkerSize',10,'Color',[0.85, 0.33, 0.10])
+%patch(NaN, NaN, [0.00, 0.45, 0.74])
+%patch(NaN, NaN, [0.85, 0.33, 0.10])
 
 % plot lines
-semilogy(t_ADMM_CPU, grad_prox_ADMM, 'color', [0.00, 0.45, 0.74],...
-    'Marker','o','MarkerSize',10, 'MarkerIndices',1:10:100)
-semilogy(t_ADMM_prl, grad_prox_ADMM,'color', [0.00, 0.45, 0.74])
+semilogy(t_ADMM_CPU, grad_prox_ADMM, '--','color', [0.00, 0.45, 0.74],...
+    'Marker','o','MarkerSize',10, 'MarkerIndices',10:10:100)
+semilogy(t_ADMM_prl, grad_prox_ADMM,'-','color', [0.00, 0.45, 0.74],...
+    'Marker','o','MarkerSize',10,'MarkerIndices',[30,80])
 
-semilogy(t_RBCD_CPU, grad_prox_RBCD, '--', 'color', [0.00, 0.45, 0.74])
-semilogy(t_CBCD_CPU, grad_prox_CBCD, ':', 'color', [0.00, 0.45, 0.74])
+semilogy(t_RBCD_CPU, grad_prox_RBCD, '-.', 'color', [0.00, 0.45, 0.74],...
+    'Marker','o','MarkerSize',10,'MarkerIndices',[15,30,60,90])
+semilogy(t_CBCD_CPU, grad_prox_CBCD, ':', 'color', [0.00, 0.45, 0.74],...
+    'Marker','o','MarkerSize',10,'MarkerIndices',[50,140])
 
-semilogy(t_ADMM_CPU, diff_ADMM, 'color', [0.85, 0.33, 0.10],...
-    'Marker','o','MarkerSize',10, 'MarkerIndices',1:10:100)
-semilogy(t_ADMM_prl, diff_ADMM, 'color',[0.85, 0.33, 0.10])
+semilogy(t_ADMM_CPU, diff_ADMM, '--','color', [0.85, 0.33, 0.10],...
+    'Marker','diamond','MarkerSize',10, 'MarkerIndices',10:10:100)
+semilogy(t_ADMM_prl, diff_ADMM,'-', 'color',[0.85, 0.33, 0.10],...
+    'Marker','diamond','MarkerSize',10,'MarkerIndices',[30,80])
 
-semilogy(t_RBCD_CPU, diff_RBCD, '--', 'color', [0.85, 0.33, 0.10])
-semilogy(t_CBCD_CPU, diff_CBCD, ':', 'color', [0.85, 0.33, 0.10])
+semilogy(t_RBCD_CPU, diff_RBCD, '-.', 'color', [0.85, 0.33, 0.10],...
+    'Marker','diamond','MarkerSize',10,'MarkerIndices',[15,30,60,90])
+semilogy(t_CBCD_CPU, diff_CBCD, ':', 'color', [0.85, 0.33, 0.10],...
+    'Marker','diamond','MarkerSize',10,'MarkerIndices',[50,140])
 
 legend('ADMM','ADMM(parallelized)', 'R-BCD','C-BCD', '$\|\tilde{\nabla}f(A^k,D^k)\|$', '$\frac{1}{n}\|A^k-A^{k-1}\|_F+\frac{1}{m}\|D^k-D^{k-1}\|_F$', 'Interpreter', 'latex')
-xlabel('time (seconds)')
+xlabel('CPU time (seconds)')
 
 
 set(gca, ...
@@ -93,7 +101,7 @@ set(gcf, ...
     'Position', [0, 0, 8, 6])
 
 box off
-
+xlim([0,1e5])
 %expfig('topic_CPU.pdf')
 
 
